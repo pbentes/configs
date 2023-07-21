@@ -32,7 +32,9 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-# xrandr --output Virtual1 --mode 1920x1080 --rate 60
-# sh ~/.fehbg
+xrandr --output Virtual-1 --mode 1920x1080 --rate 60
+xrandr --output Virtual1 --mode 1920x1080 --rate 60
+sh ~/.fehbg
 slstatus &
+picom -b --animations --config ~/my-arch-setup/picom.conf &
 dwm
