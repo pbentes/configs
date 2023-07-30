@@ -10,3 +10,4 @@ cd yay-git
 makepkg -si
 yay -S picom-ftlabs-git
 ```
+[Portmaster Firewall](https://safing.io/)
