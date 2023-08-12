@@ -90,15 +90,29 @@ $HELPER -S picom-ftlabs-git\
 	   portmaster-stub-bin
 
 # install wallpaper
+mkdir -p ~/Pictures/Wallpapers
+cp ~/.config/dotfiles/wallpapers/* ~/Pictures/Wallpapers
+feh --bg-fill ~/Pictures/Wallpapers/dedsec.jpg
+sudo chmod +x ~/.fehbg
 
 # install picom.conf
+cp ~/.config/dotfiles/picom.conf ~/.config/picom.conf
 
 # install browser
 
 # install file manager
 
 # install neovim
+sudo pacman -S --noconfirm neovim
 
 # install rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # install nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
+
+# install gimp
+sudo pacman -S --noconfirm gimp
+
+# install xinitrc
+cp ~/.config/dotfiles/.xinitrc ~/.xinitrc
