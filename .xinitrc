@@ -48,7 +48,9 @@ install_if_missing() {
     local command=$1
     local dir=$2
 
-    if ! command -v "$command" &> /dev/null; then
+    if type "$command" > /dev/null 
+    then echo "$command is already installed. Skipping build step"
+    else
         cd "$dir" || exit
         sudo make clean install
     fi
