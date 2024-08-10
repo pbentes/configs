@@ -59,7 +59,7 @@ cd ~
 if [ ! -f "~/.fehbg" ]; then
     feh --bg-fill ~/Pictures/Wallpapers/wallpaper.jpg
     sudo chmod +x ~/.fehbg
-else then
+else 
     sh ~/.fehbg
 fi
 
