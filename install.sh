@@ -56,6 +56,19 @@ sudo cp ~/.config/dotfiles/wallpapers/* ~/Pictures/Wallpapers
 sudo cp ~/.config/dotfiles/.xinitrc ~/.xinitrc
 sudo chmod +x ~/.xinitrc
 
+install_suckless() {
+    local command=$1
+    local dir=$2
+
+    cd "$dir" || exit
+    sudo make clean install
+}
+
+install_suckless "dmenu" "$HOME/.config/dotfiles/suckless/st"
+install_suckless "dmenu" "$HOME/.config/dotfiles/suckless/dmenu"
+install_suckless "slstatus" "$HOME/.config/dotfiles/suckless/slstatus"
+install_suckless "dwm" "$HOME/.config/dotfiles/suckless/dwm"
+
 # install ly
 sudo pacman -S --noconfirm ly
 sudo systemctl enable ly.service

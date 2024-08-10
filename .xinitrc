@@ -43,24 +43,6 @@ for monitor in $monitors; do
     xrandr --output $monitor --mode $native_mode --rate $native_refresh_rate
 done
 
-# Check and install necessary programs
-install_if_missing() {
-    local command=$1
-    local dir=$2
-
-    if type "$command" > /dev/null 
-    then echo "$command is already installed. Skipping build step"
-    else
-        cd "$dir" || exit
-        sudo make clean install
-    fi
-}
-
-install_if_missing "dmenu" "$HOME/.config/dotfiles/suckless/st"
-install_if_missing "dmenu" "$HOME/.config/dotfiles/suckless/dmenu"
-install_if_missing "slstatus" "$HOME/.config/dotfiles/suckless/slstatus"
-install_if_missing "dwm" "$HOME/.config/dotfiles/suckless/dwm"
-
 if [ ! -f "~/.fehbg" ]; then
     feh --bg-fill ~/Pictures/Wallpapers/wallpaper.jpg
     sudo chmod +x ~/.fehbg
