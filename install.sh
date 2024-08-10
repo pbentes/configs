@@ -47,13 +47,13 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # install AUR helper
 mkdir -p ~/.srcs
 
-HELPER="paru"
-echo "We need an AUR helper. It is essential. 1) paru       2) yay"
-read -r -p "What is the AUR helper of your choice? (Default is paru): " num
+HELPER="yay"
+echo "We need an AUR helper. It is essential. 1) yay       2) pary"
+read -r -p "What is the AUR helper of your choice? (Default is 1): " num
 
 if [ $num -eq 2 ]
 then
-    HELPER="yay"
+    HELPER="paru"
 fi
 
 if ! command -v $HELPER &> /dev/null
