@@ -58,7 +58,7 @@ sudo chmod +x ~/.xinitrc
 
 
 # install ly
-sudo pacman -S ly
+sudo pacman -S --noconfirm ly
 sudo systemctl enable ly.service
 sudo systemctl start ly.service
 
