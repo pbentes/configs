@@ -56,7 +56,6 @@ sudo cp ~/.config/dotfiles/wallpapers/* ~/Pictures/Wallpapers
 sudo cp ~/.config/dotfiles/.xinitrc ~/.xinitrc
 sudo chmod +x ~/.xinitrc
 
-
 # install ly
 sudo pacman -S --noconfirm ly
 sudo systemctl enable ly.service
