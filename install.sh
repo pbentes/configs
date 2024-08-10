@@ -41,25 +41,12 @@ make clean
 cd ~
 clear
 
-# install AUR helper
+# install Yay
 mkdir -p ~/.srcs
 
-HELPER="yay"
-echo "We need an AUR helper. It is essential. 1) yay       2) pary"
-read -r -p "What is the AUR helper of your choice? (Default is 1): " num
-
-if [ $num -eq 2 ]
-then
-    HELPER="paru"
-fi
-
-if ! command -v $HELPER &> /dev/null
-then
-    echo "It seems that you don't have $HELPER installed, I'll install that for you before continuing."
-	git clone https://aur.archlinux.org/$HELPER.git ~/.srcs/$HELPER
-	cd ~/.srcs/$HELPER/ 
-	makepkg -si
-fi
+git clone https://aur.archlinux.org/yay.git ~/.srcs/yay
+cd ~/.srcs/yay/ 
+makepkg -si
 
 # feh/wallpaper
 sudo pacman -S --noconfirm feh
@@ -69,15 +56,16 @@ feh --bg-fill ~/Pictures/Wallpapers/wallpaper.jpg
 sudo chmod +x ~/.fehbg
 
 # install browser
+sudo pacman -S --noconfirm firefox
 
 # install file manager
+
 
 # install neovim
 sudo pacman -S --noconfirm neovim
 
 # install picom
-$HELPER -S picom-ftlabs-git\
-	   portmaster-stub-bin
+yay -S picom-ftlabs-git
 cp ~/.config/dotfiles/picom.conf ~/.config/picom.conf
 
 # install nvm
@@ -88,3 +76,12 @@ sudo pacman -S --noconfirm gimp
 
 # install xinitrc
 cp ~/.config/dotfiles/.xinitrc ~/.xinitrc
+
+# Install black arch utils
+curl -O https://blackarch.org/strap.sh
+chmod +x strap.sh
+sudo ./strap.sh
+sudo pacman -Syu
+
+sudo pacman -Sgg | grep blackarch | cut -d' ' -f2 | sort -u
+sudo pacman -Syyu --needed --overwrite='*' blackarch
