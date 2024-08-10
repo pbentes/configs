@@ -43,13 +43,8 @@ for monitor in $monitors; do
     xrandr --output $monitor --mode $native_mode --rate $native_refresh_rate
 done
 
-if [ ! -f "~/.fehbg" ]; then
-    feh --bg-fill ~/Pictures/Wallpapers/wallpaper.jpg
-    sudo chmod +x ~/.fehbg
-else 
-    sh ~/.fehbg
-fi
+feh --bg-fill ~/Pictures/Wallpapers/wallpaper.jpg
 
-picom &
+picom -b --animations --config ~/.config/dotfiles/picom.conf &
 slstatus &
 exec dwm

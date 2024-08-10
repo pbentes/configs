@@ -45,7 +45,6 @@ sudo rm -rf yay
 
 # install picom
 yay -S --noconfirm picom-ftlabs-git
-sudo cp ~/.config/dotfiles/picom.conf ~/.config/picom.conf
 
 # feh/wallpaper
 sudo pacman -S --noconfirm feh
