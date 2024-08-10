@@ -40,12 +40,6 @@ clear
 # install xinitrc
 sudo cp ~/.config/dotfiles/.xinitrc ~/.xinitrc
 
-# feh/wallpaper
-sudo pacman -S --noconfirm feh
-mkdir -p ~/Pictures/Wallpapers
-sudo cp ~/.config/dotfiles/wallpapers/* ~/Pictures/Wallpapers
-feh --bg-fill ~/Pictures/Wallpapers/wallpaper.jpg
-sudo chmod +x ~/.fehbg
 
 # install browser
 sudo pacman -S --noconfirm firefox
@@ -66,8 +60,9 @@ sudo pacman -S --noconfirm gimp
 mkdir -p ~/.srcs
 
 git clone https://aur.archlinux.org/yay.git ~/.srcs/yay
+sudo chown -R $(whoami):$(whoami) ~/.srcs/yay
 cd ~/.srcs/yay/ 
-makepkg -si
+makepkg -si --noconfirm
 
 ./pkg/yay/usr/bin/yay -Y --gendb
 ./pkg/yay/usr/bin/yay -Syu --devel
@@ -76,3 +71,12 @@ makepkg -si
 # install picom
 ./pkg/yay/usr/bin/yay -S picom-ftlabs-git
 sudo cp ~/.config/dotfiles/picom.conf ~/.config/picom.conf
+
+startx
+
+# feh/wallpaper
+sudo pacman -S --noconfirm feh
+mkdir -p ~/Pictures/Wallpapers
+sudo cp ~/.config/dotfiles/wallpapers/* ~/Pictures/Wallpapers
+feh --bg-fill ~/Pictures/Wallpapers/wallpaper.jpg
+sudo chmod +x ~/.fehbg
