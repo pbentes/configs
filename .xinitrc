@@ -43,22 +43,22 @@ for monitor in $monitors; do
     xrandr --output $monitor --mode $native_mode --rate $native_refresh_rate
 done
 
-if ! command -v dmenu > /dev/null 2>&1; then
+if ! command -v dmenu &> /dev/null then
     cd ~/.config/dotfiles/suckless/st
     sudo make clean install
 fi
 
-if ! command -v dmenu > /dev/null 2>&1; then
+if ! command -v dmenu &> /dev/null then
     cd ~/.config/dotfiles/suckless/dmenu
     sudo make clean install
 fi
 
-if ! command -v slstatus > /dev/null 2>&1; then
+if ! command -v slstatus &> /dev/null then
     cd ~/.config/dotfiles/suckless/slstatus
     sudo make clean install
 fi
 
-if ! command -v dwm > /dev/null 2>&1; then
+if ! command -v dwm &> /dev/null then
     cd ~/.config/dotfiles/suckless/dwm
     sudo make clean install
     cd ~
