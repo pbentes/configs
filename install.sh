@@ -41,9 +41,6 @@ make clean
 cd ~
 clear
 
-# install rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
 # install AUR helper
 mkdir -p ~/.srcs
 
