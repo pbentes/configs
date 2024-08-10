@@ -1,22 +1,11 @@
-I use [lxappearance](https://github.com/lxde/lxappearance) to change the theme for the menu bar and thunar.
+# My Dotfiles
 
-Using  [picom](https://github.com/yshui/picom) https://www.youtube.com/watch?v=t6Klg7CvUxA
+My dotfiles is a repeatable installation file. It will install the suckless utils and all the software I need, copy configurations to the right locations, install fonts and wallpapers and install black arch utils.
 
+To run this all you need is a clean installation of arch linux with the xorg profile and your drivers of choice.
 
-# Install my installation
+# Install
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/pbentes/dotfiles/main/install.sh | sh
 ```
-
-## Installs
-
-```bash
-git clone https://aur.archlinux.org/yay.git
-cd yay-git
-makepkg -si
-yay -S picom-ftlabs-git
-yay -S portmaster-stub-bin
-```
-[Portmaster Firewall](https://safing.io/)
-
