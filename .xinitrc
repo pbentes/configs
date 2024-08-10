@@ -32,10 +32,18 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-xrandr --output HDMI-0 --mode 1440x900 --rate 60
-xrandr --output DP-0 --mode 1920x1080 --rate 144
-xrandr --output DP-0 --pos 0x0 --output HDMI-0 --pos 1920x0
+monitors=$(xrandr --query | grep " connected" | cut -d ' ' -f1)
+for monitor in $monitors; do
+    # Get the native resolution and refresh rate for each monitor
+    native_mode=$(xrandr --query | grep -A1 "^$monitor connected" | tail -n1 | awk '{print $1}')
+    native_refresh_rate=$(xrandr --query | grep -A1 "^$monitor connected" | tail -n1 | awk '{print $NF}')
+    
+    # Set the monitor to its native resolution and refresh rate
+    echo "Setting $monitor to $native_mode at $native_refresh_rate Hz"
+    xrandr --output $monitor --mode $native_mode --rate $native_refresh_rate
+done
+
 sh ~/.fehbg
-slstatus &
 picom -b --animations --config ~/.config/picom.conf &
+slstatus &
 dwm

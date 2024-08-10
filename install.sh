@@ -4,7 +4,7 @@ echo "Updating system"
 sudo pacman --noconfirm -Syu
 
 # install base-devel if not installed
-sudo pacman -S --noconfirm --needed base-devel wget git
+sudo pacman -S --noconfirm --needed base-devel wget git xorg-xrandr
 
 mkdir -p ~/.config/dotfiles
 git clone https://github.com/pbentes/dotfiles.git ~/.config/dotfiles
