@@ -66,6 +66,6 @@ else
     sh ~/.fehbg
 fi
 
-picom -b --animations --config ~/.config/picom.conf &
+picom &
 slstatus &
-dwm
+exec dwm
