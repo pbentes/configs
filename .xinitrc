@@ -63,7 +63,7 @@ else
     sh ~/.fehbg
 fi
 
-if command -v mycommand > /dev/null 2>&1; then
+if command -v picom > /dev/null 2>&1; then
     picom -b --animations --config ~/.config/picom.conf &
 fi
 slstatus &
