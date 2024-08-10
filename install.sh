@@ -41,17 +41,13 @@ make clean
 cd ~
 clear
 
-# install Yay
-mkdir -p ~/.srcs
-
-git clone https://aur.archlinux.org/yay.git ~/.srcs/yay
-cd ~/.srcs/yay/ 
-makepkg -si
+# install xinitrc
+sudo cp ~/.config/dotfiles/.xinitrc ~/.xinitrc
 
 # feh/wallpaper
 sudo pacman -S --noconfirm feh
 mkdir -p ~/Pictures/Wallpapers
-cp ~/.config/dotfiles/wallpapers/* ~/Pictures/Wallpapers
+sudo cp ~/.config/dotfiles/wallpapers/* ~/Pictures/Wallpapers
 feh --bg-fill ~/Pictures/Wallpapers/wallpaper.jpg
 sudo chmod +x ~/.fehbg
 
@@ -64,15 +60,20 @@ sudo pacman -S --noconfirm firefox
 # install neovim
 sudo pacman -S --noconfirm neovim
 
-# install picom
-yay -S picom-ftlabs-git
-cp ~/.config/dotfiles/picom.conf ~/.config/picom.conf
-
 # install nvm
 curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | sh
 
 # install gimp
 sudo pacman -S --noconfirm gimp
 
-# install xinitrc
-cp ~/.config/dotfiles/.xinitrc ~/.xinitrc
+# install Yay
+mkdir -p ~/.srcs
+
+git clone https://aur.archlinux.org/yay.git ~/.srcs/yay
+cd ~/.srcs/yay/ 
+makepkg -si
+
+# install picom
+yay -S picom-ftlabs-git
+sudo cp ~/.config/dotfiles/picom.conf ~/.config/picom.conf
+
