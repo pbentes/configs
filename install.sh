@@ -22,22 +22,18 @@ echo "Installing suckless programs"
 
 cd ~/.config/dotfiles/suckless/st
 sudo make clean install
-make clean
 clear
 
 cd ~/.config/dotfiles/suckless/dmenu
 sudo make clean install
-make clean
 clear
 
 cd ~/.config/dotfiles/suckless/slstatus
 sudo make clean install
-make clean
 clear
 
 cd ~/.config/dotfiles/suckless/dwm
 sudo make clean install
-make clean
 cd ~
 clear
 
