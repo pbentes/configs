@@ -43,26 +43,21 @@ for monitor in $monitors; do
     xrandr --output $monitor --mode $native_mode --rate $native_refresh_rate
 done
 
-if ! command -v dmenu &> /dev/null then
-    cd ~/.config/dotfiles/suckless/st
-    sudo make clean install
-fi
+# Check and install necessary programs
+install_if_missing() {
+    local command=$1
+    local dir=$2
 
-if ! command -v dmenu &> /dev/null then
-    cd ~/.config/dotfiles/suckless/dmenu
-    sudo make clean install
-fi
+    if ! command -v "$command" &> /dev/null; then
+        cd "$dir" || exit
+        sudo make clean install
+    fi
+}
 
-if ! command -v slstatus &> /dev/null then
-    cd ~/.config/dotfiles/suckless/slstatus
-    sudo make clean install
-fi
-
-if ! command -v dwm &> /dev/null then
-    cd ~/.config/dotfiles/suckless/dwm
-    sudo make clean install
-    cd ~
-fi
+install_if_missing "dmenu" "$HOME/.config/dotfiles/suckless/st"
+install_if_missing "dmenu" "$HOME/.config/dotfiles/suckless/dmenu"
+install_if_missing "slstatus" "$HOME/.config/dotfiles/suckless/slstatus"
+install_if_missing "dwm" "$HOME/.config/dotfiles/suckless/dwm"
 
 if [ ! -f "~/.fehbg" ]; then
     feh --bg-fill ~/Pictures/Wallpapers/wallpaper.jpg
@@ -71,7 +66,7 @@ else
     sh ~/.fehbg
 fi
 
-if command -v picom > /dev/null 2>&1; then
+if command -v picom &> /dev/null then
     picom -b --animations --config ~/.config/picom.conf &
 fi
 slstatus &
