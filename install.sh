@@ -69,7 +69,10 @@ git clone https://aur.archlinux.org/yay.git ~/.srcs/yay
 cd ~/.srcs/yay/ 
 makepkg -si
 
+yay -Y --gendb
+yay -Syu --devel
+yay -Y --devel --save
+
 # install picom
 yay -S picom-ftlabs-git
 sudo cp ~/.config/dotfiles/picom.conf ~/.config/picom.conf
-
