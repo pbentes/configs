@@ -17,31 +17,11 @@ cp -r ~/.config/dotfiles/fonts/* ~/.local/share/fonts/
 fc-cache -f
 clear
 
-# install suckless utils
-echo "Installing suckless programs"
-
-cd ~/.config/dotfiles/suckless/st
-sudo make clean install
-
-cd ~/.config/dotfiles/suckless/dmenu
-sudo make clean install
-
-cd ~/.config/dotfiles/suckless/slstatus
-sudo make clean install
-
-cd ~/.config/dotfiles/suckless/dwm
-sudo make clean install
-cd ~
-
-# install xinitrc
-sudo cp ~/.config/dotfiles/.xinitrc ~/.xinitrc
-
-
 # install browser
 sudo pacman -S --noconfirm firefox
 
 # install file manager
-
+sudo pacman -S --noconfirm thunar
 
 # install neovim
 sudo pacman -S --noconfirm neovim
@@ -71,5 +51,8 @@ sudo cp ~/.config/dotfiles/picom.conf ~/.config/picom.conf
 sudo pacman -S --noconfirm feh
 mkdir -p ~/Pictures/Wallpapers
 sudo cp ~/.config/dotfiles/wallpapers/* ~/Pictures/Wallpapers
+
+# install xinitrc
+sudo cp ~/.config/dotfiles/.xinitrc ~/.xinitrc
 
 startx

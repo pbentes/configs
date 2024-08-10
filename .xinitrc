@@ -43,6 +43,18 @@ for monitor in $monitors; do
     xrandr --output $monitor --mode $native_mode --rate $native_refresh_rate
 done
 
+cd ~/.config/dotfiles/suckless/st
+sudo make clean install
+
+cd ~/.config/dotfiles/suckless/dmenu
+sudo make clean install
+
+cd ~/.config/dotfiles/suckless/slstatus
+sudo make clean install
+
+cd ~/.config/dotfiles/suckless/dwm
+sudo make clean install
+cd ~
 
 if [ ! -f "~/.fehbg" ]; then
     feh --bg-fill ~/Pictures/Wallpapers/wallpaper.jpg
