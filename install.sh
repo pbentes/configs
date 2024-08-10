@@ -44,7 +44,7 @@ cd ..
 sudo rm -rf yay
 
 # install picom
-./pkg/yay/usr/bin/yay -S picom-ftlabs-git
+yay -S --noconfirm picom-ftlabs-git
 sudo cp ~/.config/dotfiles/picom.conf ~/.config/picom.conf
 
 # feh/wallpaper
@@ -54,5 +54,12 @@ sudo cp ~/.config/dotfiles/wallpapers/* ~/Pictures/Wallpapers
 
 # install xinitrc
 sudo cp ~/.config/dotfiles/.xinitrc ~/.xinitrc
+sudo chmod +x ~/.xinitrc
 
-startx
+
+# install ly
+sudo pacman -S ly
+sudo systemctl enable ly.service
+sudo systemctl start ly.service
+
+sudo reboot
