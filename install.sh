@@ -22,20 +22,16 @@ echo "Installing suckless programs"
 
 cd ~/.config/dotfiles/suckless/st
 sudo make clean install
-clear
 
 cd ~/.config/dotfiles/suckless/dmenu
 sudo make clean install
-clear
 
 cd ~/.config/dotfiles/suckless/slstatus
 sudo make clean install
-clear
 
 cd ~/.config/dotfiles/suckless/dwm
 sudo make clean install
 cd ~
-clear
 
 # install xinitrc
 sudo cp ~/.config/dotfiles/.xinitrc ~/.xinitrc
@@ -57,26 +53,23 @@ curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/nvm-sh/nv
 sudo pacman -S --noconfirm gimp
 
 # install Yay
-mkdir -p ~/.srcs
+cd /opt
+sudo git clone https://aur.archlinux.org/yay.git
+sudo chown -R $(whoami):$(whoami) yay
 
-git clone https://aur.archlinux.org/yay.git ~/.srcs/yay
-sudo chown -R $(whoami):$(whoami) ~/.srcs/yay
-cd ~/.srcs/yay/ 
+cd yay
 makepkg -si --noconfirm
 
-./pkg/yay/usr/bin/yay -Y --gendb
-./pkg/yay/usr/bin/yay -Syu --devel
-./pkg/yay/usr/bin/yay -Y --devel --save
+cd ..
+sudo rm -rf yay
 
 # install picom
 ./pkg/yay/usr/bin/yay -S picom-ftlabs-git
 sudo cp ~/.config/dotfiles/picom.conf ~/.config/picom.conf
 
-startx
-
 # feh/wallpaper
 sudo pacman -S --noconfirm feh
 mkdir -p ~/Pictures/Wallpapers
 sudo cp ~/.config/dotfiles/wallpapers/* ~/Pictures/Wallpapers
-feh --bg-fill ~/Pictures/Wallpapers/wallpaper.jpg
-sudo chmod +x ~/.fehbg
+
+startx
