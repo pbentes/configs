@@ -63,6 +63,8 @@ else
     sh ~/.fehbg
 fi
 
-picom -b --animations --config ~/.config/picom.conf &
+if command -v mycommand > /dev/null 2>&1; then
+    picom -b --animations --config ~/.config/picom.conf &
+fi
 slstatus &
 dwm
