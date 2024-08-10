@@ -76,12 +76,3 @@ sudo pacman -S --noconfirm gimp
 
 # install xinitrc
 cp ~/.config/dotfiles/.xinitrc ~/.xinitrc
-
-# Install black arch utils
-curl -O https://blackarch.org/strap.sh
-chmod +x strap.sh
-sudo ./strap.sh
-sudo pacman -Syu
-
-sudo pacman -Sgg | grep blackarch | cut -d' ' -f2 | sort -u
-sudo pacman -Syyu --needed --overwrite='*' blackarch
