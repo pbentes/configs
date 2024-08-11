@@ -46,6 +46,9 @@ sudo rm -rf yay
 # install picom
 yay -S --noconfirm picom-ftlabs-git
 
+# install onlyoffice
+yay -S --noconfirm onlyoffice-bin
+
 # feh/wallpaper
 sudo pacman -S --noconfirm feh
 mkdir -p ~/Pictures/Wallpapers
