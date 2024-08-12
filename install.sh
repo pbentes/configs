@@ -6,6 +6,10 @@ sudo pacman --noconfirm -Syu
 # install base-devel if not installed
 sudo pacman -S --noconfirm --needed base-devel wget git xorg-xrandr
 
+mkdir ~/Desktop
+mkdir ~/Pictures
+mkdir ~/Documents
+
 mkdir -p ~/.config/dotfiles
 git clone https://github.com/pbentes/dotfiles.git ~/.config/dotfiles
 
