@@ -21,11 +21,8 @@ cp -r ~/.config/dotfiles/fonts/* ~/.local/share/fonts/
 fc-cache -f
 clear
 
-# install browser
-sudo pacman -S --noconfirm firefox
-
 # install file manager
-sudo pacman -S --noconfirm thunar
+sudo pacman -S --noconfirm nautilus
 
 # install neovim
 sudo pacman -S --noconfirm neovim
@@ -46,6 +43,9 @@ makepkg -si --noconfirm
 
 cd ..
 sudo rm -rf yay
+
+# install browser
+yay -S --noconfirm brave-bin
 
 # install picom
 yay -S --noconfirm picom-ftlabs-git
