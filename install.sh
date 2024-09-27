@@ -1,5 +1,7 @@
 #!/bin/bash
 
+su
+
 echo "Updating system"
 sudo pacman --noconfirm -Syu
 
