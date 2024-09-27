@@ -21,6 +21,14 @@ cp -r ~/.config/dotfiles/fonts/* ~/.local/share/fonts/
 fc-cache -f
 clear
 
+# install tor
+sudo pacman -S --noconfirm tor
+
+sed '/^\[global\]/a\VirtualAddrNetworkIPv4 10.192.0.0/10' /etc/tor/torrc
+sed '/^\[global\]/a\AutomapHostsOnResolve 1' /etc/tor/torrc
+sed '/^\[global\]/a\TransPort 9040' /etc/tor/torrc
+sed '/^\[global\]/a\DNSPort 5353' /etc/tor/torrc
+
 # install file manager
 sudo pacman -S --noconfirm nautilus
 
@@ -77,6 +85,25 @@ install_suckless "dwm" "$HOME/.config/dotfiles/suckless/dwm"
 
 # install ly
 sudo pacman -S --noconfirm ly
+
+# setup iptables
+sudo iptables -F
+sudo iptables -t nat -F
+sudo iptables -t nat -A OUTPUT -m owner --uid-owner tor -j RETURN
+sudo iptables -t nat -A OUTPUT -p tcp --dport 9040 -j RETURN
+sudo iptables -t nat -A OUTPUT -d 127.0.0.1/8 -j RETURN
+sudo iptables -t nat -A OUTPUT -p tcp -j REDIRECT --to-ports 9040
+sudo iptables -t nat -A OUTPUT -p udp --dport 53 -j REDIRECT --to-ports 5353
+
+sudo iptables-save > /etc/iptables/iptables.rules
+
+# start services
+sudo systemctl enable tor
+sudo systemctl start tor
+
+sudo systemctl enable iptables
+sudo systemctl enable iptables
+
 sudo systemctl enable ly.service
 sudo systemctl start ly.service
 
