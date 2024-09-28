@@ -26,10 +26,14 @@ clear
 # install tor
 sudo pacman -S --noconfirm tor
 
-sed '/^\[global\]/a\VirtualAddrNetworkIPv4 10.192.0.0/10' /etc/tor/torrc
-sed '/^\[global\]/a\AutomapHostsOnResolve 1' /etc/tor/torrc
-sed '/^\[global\]/a\TransPort 9040' /etc/tor/torrc
-sed '/^\[global\]/a\DNSPort 5353' /etc/tor/torrc
+sudo cp /etc/tor/torrc /etc/tor/torrc.bak
+
+cat <<EOL >> /etc/tor/torrc
+VirtualAddrNetworkIPv4 10.192.0.0/10
+AutomapHostsOnResolve 1
+TransPort 9040
+DNSPort 5353
+EOL
 
 # install file manager
 sudo pacman -S --noconfirm nautilus
